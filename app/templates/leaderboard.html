@@ -1,0 +1,25 @@
+<h3>Leaderboard | MRND 2017</h3>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <!--<th>#</th>-->
+          <th>Name</th>
+          <th>College</th>
+          <th>Total Score</th>
+        </tr>
+    </thead>
+    <tr>
+      <td><input [(ngModel)]="onename" class="form-control" placeholder="filter by name"></td>
+      <td><input [(ngModel)]="onecollege" class="form-control" placeholder="college"></td>
+      <td><input [(ngModel)]="onescore" class="form-control" placeholder="greater than"></td>
+    </tr>
+    <tr *ngFor="let stud of students | studfilter:{'name': onename, 'college':onecollege, 'score':onescore}">
+        <!--<td>{{i+1}}</td>-->
+        <td>{{stud.Name}}</td>
+        <td>{{stud.College}}</td>
+        <td>{{stud['Total Score']}}</td>
+    </tr>
+  </table>
+</div>
