@@ -8,9 +8,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class StudFilterPipe implements PipeTransform {
     transform(items: any[], value: any[]): any[] {
-        // filter items array, items which match and return true will be kept, false will be filtered out
         if (!items) return [];        
-        //return items.filter(item => item.Name.contains(value));
         return items.filter(function(item) {
             if(!value['name']) value['name'] = '';
             if(!value['college']) value['college'] = '';

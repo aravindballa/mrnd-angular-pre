@@ -1,25 +1,49 @@
 <h3>Leaderboard | MRND 2017</h3>
+<br><br>
+<p>Sort in
+  <select [(ngModel)]="onesort">
+          <option value="asc">Ascending</option>
+          <option value="des">Descending</option>
+  </select>
+  order of total score
+</p>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
         <tr>
           <!--<th>#</th>-->
-          <th>Name</th>
-          <th>College</th>
-          <th>Total Score</th>
+          <th *ngFor="let key of tableHeads()" >{{ key }}</th>
         </tr>
     </thead>
     <tr>
       <td><input [(ngModel)]="onename" class="form-control" placeholder="filter by name"></td>
-      <td><input [(ngModel)]="onecollege" class="form-control" placeholder="college"></td>
+      <td>
+        <!--<input [(ngModel)]="onecollege" class="form-control" placeholder="college">-->
+        <select [(ngModel)]="onecollege" class="form-control">
+          <option value="">All</option>
+          <option *ngFor="let college of colleges" value="{{ college }}">{{ college }}</option>
+        </select>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td><input [(ngModel)]="onescore" class="form-control" placeholder="greater than"></td>
+      <td></td>
     </tr>
-    <tr *ngFor="let stud of students | studfilter:{'name': onename, 'college':onecollege, 'score':onescore}">
+    <tr *ngFor="let stud of students | studfilter:{'name': onename, 'college':onecollege, 'score':onescore} | sort: onesort">
         <!--<td>{{i+1}}</td>-->
-        <td>{{stud.Name}}</td>
-        <td>{{stud.College}}</td>
-        <td>{{stud['Total Score']}}</td>
+        <td *ngFor="let key of tableHeads()">{{stud[key]}}</td>
     </tr>
   </table>
 </div>

@@ -7,10 +7,11 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { StudFilterPipe } from './studfilter.pipe'
+import { StudSortPipe } from './studsort.pipe'
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule, CommonModule],
-  declarations: [ AppComponent, LeaderboardComponent, StudFilterPipe ],
+  declarations: [ AppComponent, LeaderboardComponent, StudFilterPipe, StudSortPipe ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
