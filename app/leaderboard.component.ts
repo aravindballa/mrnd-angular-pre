@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaderboardService } from './leaderboard.service';
 import { Student } from './student';
+import { StudSortPipe } from './studsort.pipe';
+import myGlobals = require('./globals');
 
 @Component({
     selector: 'lboard',
     templateUrl: 'app/templates/leaderboard.html',
-    providers: [LeaderboardService]
+    providers: [LeaderboardService, StudSortPipe],
 })
 export class LeaderboardComponent implements OnInit{
     errorMessage: string;
     students:  Student[];
     mode: 'Observable';
     colleges: string[];
+    field: String;
 
-    constructor(private leaderboardService: LeaderboardService) {}
+    constructor(private leaderboardService: LeaderboardService, private pipe:StudSortPipe) {
+    }
 
     ngOnInit() { this.getStats(); }
 
@@ -57,5 +61,9 @@ export class LeaderboardComponent implements OnInit{
             "Total Score",
             "TimeRanking"
         ]
+    }
+
+    from(arg: string) {
+        myGlobals.changing = arg;
     }
 }

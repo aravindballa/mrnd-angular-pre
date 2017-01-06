@@ -1,19 +1,30 @@
 <h3>Leaderboard | MRND 2017</h3>
 <br><br>
-<p>Sort in
-  <select [(ngModel)]="onesort">
-          <option value="asc">Ascending</option>
-          <option value="des">Descending</option>
-  </select>
-  order of total score
-</p>
+
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
         <tr>
           <!--<th>#</th>-->
-          <th *ngFor="let key of tableHeads()" >{{ key }}</th>
+          <!--<th *ngFor="let key of tableHeads()" >{{ key }}</th>-->
+          <th>Name</th>
+          <th>College</th>
+          <th>C-Basics<br><select [(ngModel)]="onesort1" (ngModelChange)="from('C-Basics')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-Arrays-Worksheet<br><select [(ngModel)]="onesort2" (ngModelChange)="from('C-Arrays-Worksheet')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-Strings-Worksheet<br><select [(ngModel)]="onesort3" (ngModelChange)="from('C-Strings-Worksheet')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-LinkedLists-Worksheet<br><select [(ngModel)]="onesort4" (ngModelChange)="from('C-LinkedLists-Worksheet')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-Arrays2-Worksheet<br><select [(ngModel)]="onesort5" (ngModelChange)="from('C-Arrays2-Worksheet')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-Strings2-Worksheet<br><select [(ngModel)]="onesort6" (ngModelChange)="from('C-Strings2-Worksheet')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-LinkedLists2-Worksheet<br><select [(ngModel)]="onesort7" (ngModelChange)="from('C-LinkedLists2-Worksheet')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-15Puzzle<br><select [(ngModel)]="onesort8" (ngModelChange)="from('C-15Puzzle')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-Recursion<br><select [(ngModel)]="onesort9" (ngModelChange)="from('C-Recursion')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>C-BinarySearchTree</th>
+          <th>Penalty</th>
+          <th>Karma</th>
+          <th>Percentage</th>
+          <th>Total Score <br><select [(ngModel)]="onesort" (ngModelChange)="from('Total Score')"><option value="asc">Ascending</option><option value="des">Descending</option></select></th>
+          <th>TimeRanking</th>
         </tr>
     </thead>
     <tr>
@@ -41,7 +52,7 @@
       <td><input [(ngModel)]="onescore" class="form-control" placeholder="greater than"></td>
       <td></td>
     </tr>
-    <tr *ngFor="let stud of students | studfilter:{'name': onename, 'college':onecollege, 'score':onescore} | sort: onesort">
+    <tr *ngFor="let stud of students | studfilter:{'name': onename, 'college':onecollege, 'score':onescore} | sort:[onesort,onesort1,onesort2,onesort3,onesort4,onesort5,onesort6,onesort7,onesort8,onesort9]">
         <!--<td>{{i+1}}</td>-->
         <td *ngFor="let key of tableHeads()">{{stud[key]}}</td>
     </tr>
